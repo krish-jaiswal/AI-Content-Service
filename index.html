@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Content Proposal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --black: #0A0A0A;
+    --off-white: #F7F4EF;
+    --gray: #888;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--off-white);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  /* Header */
+  .header {
+    border-bottom: 1px solid #222;
+    padding-bottom: 40px;
+    margin-bottom: 48px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .badge {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 16px;
+  }
+
+  h1 span { color: var(--gold); }
+
+  .subtitle {
+    color: var(--gray);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 480px;
+  }
+
+  /* What you get */
+  .section {
+    margin-bottom: 48px;
+    animation: fadeUp 0.6s ease 0.15s both;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .delivers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .deliver-item {
+    background: #111;
+    border: 1px solid #1e1e1e;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+  }
+
+  .deliver-item:hover { border-color: var(--gold); }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Pricing */
+  .pricing {
+    animation: fadeUp 0.6s ease 0.3s both;
+    margin-bottom: 48px;
+  }
+
+  .price-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .price-card {
+    background: #111;
+    border: 1px solid #1e1e1e;
+    padding: 28px 24px;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+
+  .price-card:hover { border-color: var(--gold); }
+
+  .price-card.featured {
+    border-color: var(--gold);
+    background: linear-gradient(145deg, #141004, #111);
+  }
+
+  .card-tag {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 12px;
+  }
+
+  .price-card.featured .card-tag { color: var(--gold); }
+
+  .price-main {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .price-sub {
+    font-size: 12px;
+    color: var(--gray);
+    margin-bottom: 20px;
+  }
+
+  .price-detail {
+    font-size: 13px;
+    color: #aaa;
+    line-height: 1.9;
+    border-top: 1px solid #222;
+    padding-top: 16px;
+  }
+
+  .price-detail strong { color: var(--off-white); }
+
+  .best-value {
+    position: absolute;
+    top: -1px;
+    right: 20px;
+    background: var(--gold);
+    color: var(--black);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    font-weight: 700;
+  }
+
+  /* Per video */
+  .per-video {
+    background: #0f0f0f;
+    border: 1px solid #1a1a1a;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    animation: fadeUp 0.6s ease 0.35s both;
+  }
+
+  .per-video-label { font-size: 13px; color: var(--gray); }
+  .per-video-label strong { display: block; color: var(--off-white); font-size: 15px; margin-bottom: 2px; }
+  .per-video-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--gold);
+  }
+
+  /* Types */
+  .types {
+    animation: fadeUp 0.6s ease 0.4s both;
+    margin-bottom: 48px;
+  }
+
+  .type-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .type-pill {
+    border: 1px solid #222;
+    padding: 8px 16px;
+    font-size: 12px;
+    color: #bbb;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+  }
+
+  .type-pill:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* CTA */
+  .cta {
+    background: linear-gradient(135deg, #1a1200, #0f0f0f);
+    border: 1px solid var(--gold);
+    padding: 36px 32px;
+    text-align: center;
+    animation: fadeUp 0.6s ease 0.5s both;
+  }
+
+  .cta h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .cta p {
+    color: var(--gray);
+    font-size: 13px;
+    margin-bottom: 24px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--black);
+    padding: 14px 36px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s;
+  }
+
+  .cta-btn:hover { background: var(--gold-light); }
+
+  /* Footer */
+  .footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid #1a1a1a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeUp 0.6s ease 0.6s both;
+  }
+
+  .footer-note { font-size: 11px; color: #444; }
+  .footer-contact { font-size: 12px; color: var(--gray); text-align: right; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 520px) {
+    .page { padding: 40px 20px; }
+    .price-cards { grid-template-columns: 1fr; }
+    .delivers { grid-template-columns: 1fr; }
+    .footer { flex-direction: column; gap: 12px; text-align: center; }
+    .footer-contact { text-align: center; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge">Service Proposal</div>
+    <h1>AI-Powered<br>Content for<br><span>Your Brand.</span></h1>
+    <p class="subtitle">Premium product videos & UGC-style ads — delivered weekly. No studio. No delays. Just results.</p>
+  </div>
+
+  <!-- What you get -->
+  <div class="section">
+    <div class="section-label">What You Get</div>
+    <div class="delivers">
+      <div class="deliver-item"><div class="dot"></div>Cinematic Product Videos</div>
+      <div class="deliver-item"><div class="dot"></div>UGC-Style Influencer Ads</div>
+      <div class="deliver-item"><div class="dot"></div>Instagram & Reel Ready</div>
+      <div class="deliver-item"><div class="dot"></div>Custom Brand Style</div>
+      <div class="deliver-item"><div class="dot"></div>Hooks & Captions</div>
+      <div class="deliver-item"><div class="dot"></div>Weekly Delivery</div>
+    </div>
+  </div>
+
+  <!-- Pricing -->
+  <div class="pricing">
+    <div class="section-label">Pricing</div>
+    <div class="price-cards">
+
+      <div class="price-card">
+        <div class="card-tag">Starter</div>
+        <div class="price-main">₹4,999</div>
+        <div class="price-sub">per month</div>
+        <div class="price-detail">
+          <strong>6 Videos / Month</strong>
+          Delivered every 2 weeks<br>
+          UGC or Cinematic style<br>
+          1 revision per video
+        </div>
+      </div>
+
+      <div class="price-card featured">
+        <div class="best-value">Best Value</div>
+        <div class="card-tag">Monthly Retainer</div>
+        <div class="price-main">₹12,000</div>
+        <div class="price-sub">per month</div>
+        <div class="price-detail">
+          <strong>12 Videos / Month</strong>
+          Delivered weekly (3/week)<br>
+          Mix of UGC + Cinematic<br>
+          Priority support
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Per video -->
+    <div class="per-video">
+      <div class="per-video-label">
+        <strong>One-Off / Single Video</strong>
+        Perfect for product launches or testing
+      </div>
+      <div class="per-video-price">₹2,500</div>
+    </div>
+  </div>
+
+  <!-- Content Types -->
+  <div class="types">
+    <div class="section-label">Content Types</div>
+    <div class="type-list">
+      <div class="type-pill">👕 Fashion & Clothing</div>
+      <div class="type-pill">⌚ Luxury Products</div>
+      <div class="type-pill">💄 Skincare & Beauty</div>
+      <div class="type-pill">🏋️ Gym & Fitness</div>
+      <div class="type-pill">📦 Dropshipping</div>
+      <div class="type-pill">☕ Food & Cafe</div>
+      <div class="type-pill">💎 Jewellery</div>
+      <div class="type-pill">📱 Tech Products</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h3>Ready to Elevate Your Content?</h3>
+    <p>Send your product reference and we'll deliver your first video within 48 hours.</p>
+    <a class="cta-btn" href="https://wa.me/919158400050?text=Hi%2C%20I%20am%20interested%20in%20your%20AI%20Content%20Service.%20Can%20we%20connect%3F" target="_blank">Get Started</a>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-note">Powered by AI · Delivered by humans</div>
+    <div class="footer-contact">
+      Reply to this message<br>to book your first video
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
